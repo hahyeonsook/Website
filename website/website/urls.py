@@ -16,10 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from posts import views
+from bookmarks import views
 from website import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.HomeView.as_view(), name='home'),
     path('posts/', include('posts.urls')),
+    path('bookmarks/', include('bookmarks.urls')),
 ]

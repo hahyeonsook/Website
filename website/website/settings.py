@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'posts.apps.PostsConfig', # 추가
+#    'bookmarks.apps.BookmarksConfig' # 추가
 ]
 
 MIDDLEWARE = [

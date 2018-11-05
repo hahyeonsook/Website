@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static "admin/css/base.css" %}"/>
+    <title><h1>{% block title %}부산놀자{% endblock %}</h1></title>
+</head>
+
+<body>
+    <div id="sidebar">
+        {% block sidebar %}
+        <ul>
+            <li><a href="/">홈</a></li>
+            <li><a href="/admin/">관리</a></li>
+            <li>북마크</li>
+        </ul>
+        {% endblock %}
+    </div>
+
+    <div id="content">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

@@ -1,5 +1,14 @@
 {% extends "base.html" %}
 
+{% block title %}홈{% endblock %}
+
 {%  block content %}
-    <h2>환영합니다.</h2>
+{% if user.is_authenticated %}
+    안녕하세요! {{ user.username }}님!
+    <p><a href="{% url 'logout' %}">로그아웃</a></p>
+    <p><a href="{% url 'password_reset' %}">비밀번호 재설정</a></p>
+{% else %}
+    <p>로그인하지 않았습니다.</p>
+    <a href="{% url 'login' %}">로그인</a>
+{% endif %}
 {% endblock content %}

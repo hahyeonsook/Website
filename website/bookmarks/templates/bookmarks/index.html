@@ -6,8 +6,8 @@
 
 {% if latest_links_list %}
     <ul>
-    {% for link in latest_links_list %}
-        <li><a href="{{ link.link }}"></a></li>
+    {% for bookmark in latest_links_list %}
+        <li><a href="{{ bookmark.link }}"></a></li>
     {% endfor %}
     </ul>
 {% else %}

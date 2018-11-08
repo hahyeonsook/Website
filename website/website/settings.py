@@ -37,6 +37,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',    #추가
+
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.github',
+
     'posts.apps.PostsConfig', # 추가
     'bookmarks.apps.BookmarksConfig' # 추가
 ]
@@ -115,9 +122,22 @@ USE_L10N = True
 
 USE_TZ = True
 
+# 추가
+AUTHENTICATION_BACKENDS = (
+    "django.contrib.auth.backends.ModelBackend",
+    "allauth.account.auth_backends.AuthenticationBackend",
+)
+
+SITE_ID = 1
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/'    # 로그인 후 / 화면으로 돌아감
+LOGOUT_REDIRECT_URL = '/'    # 로그아웃 후 / 화면으로 돌아감
+
+
+EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
+EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")

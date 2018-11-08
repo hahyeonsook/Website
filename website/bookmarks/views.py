@@ -10,7 +10,8 @@ class IndexView(generic.ListView):
     model = Bookmark
     template_name = 'bookmarks/index.html'
     context_object_name = 'latest_links_list'
+#    link = model.link
 
     def get_queryset(self):
         # 최신순으로 링크 나열
-        return Link.objects.order_by('-id')
+        return Bookmark.objects.order_by('-id')

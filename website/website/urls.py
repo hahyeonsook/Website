@@ -22,7 +22,7 @@ from website import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.HomeView.as_view(), name='home'),
-    path('', include('django.contrib.auth.urls')),
+#    path('', include('django.contrib.auth.urls')),
     path('accounts/', include('allauth.urls')),    # 깃헙 사이트 계정으로 로그인 할 수 있도록
     path('posts/', include('posts.urls')),
     path('bookmarks/', include('bookmarks.urls')),

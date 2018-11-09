@@ -54,7 +54,7 @@ INSTALLED_APPS = [
 #    'allauth.socialaccount.providers.twitter',
 
     'posts.apps.PostsConfig', # 추가
-    'bookmarks.apps.BookmarksConfig' # 추가
+    'bookmarks.apps.BookmarksConfig', # 추가
 ]
 
 MIDDLEWARE = [
@@ -149,6 +149,10 @@ STATIC_URL = '/static/'
 LOGIN_REDIRECT_URL = '/'    # 로그인 후 / 화면으로 돌아감
 LOGOUT_REDIRECT_URL = '/'    # 로그아웃 후 / 화면으로 돌아감
 
-
+# 메일 주소
 EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
-EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
+EMAIL_FILE_PATH = os.path.join(BASE_DIR, 'sent_emails')
+
+# 기타 파일
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

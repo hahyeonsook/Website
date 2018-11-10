@@ -5,12 +5,7 @@
 {% block title %}홈{% endblock %}
 
 {%  block content %}
-{% if user.is_authenticated %}
-    안녕하세요! {{ user.username }}님!
-    <p><a href="/accounts/logout">로그아웃</a></p>
-{% else %}
-    <p>로그인하지 않았습니다.</p>
-    <p><a href="/accounts/login">로그인</a></p>
-<!--    <p><a href="{% provider_login_url "facebook" process="connect"%}">Connect a Facebook account</a></p>-->
-{% endif %}
+
+<h2>부산 놀자</h2>
+
 {% endblock content %}

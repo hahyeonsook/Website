@@ -1,0 +1,12 @@
+{% extends "base_posts.html" %}
+
+{% block content %}
+
+<h1>{{ post.title }}</h1><h3>{{ post.pub_date }}</h3>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<p> {{ post.image }}</p>
+<p> {{ post.content }} </p>
+
+{%endblock content %}

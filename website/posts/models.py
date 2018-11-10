@@ -13,7 +13,7 @@ class Post(models.Model):
 #    tags = models.ManyToManyField('Tag')
 
     def __str__(self):
-        return 'Post (Title: {self.title}, User: {self.user.username})'
+        return self.title
 
 class Image(models.Model):
     image = models.ImageField(upload_to='post')
@@ -32,4 +32,4 @@ class Comment(models.Model):
     pub_date = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
-        return 'Comment (PK: {self.pk}, User: {self.user.username})'
+        return self.pk

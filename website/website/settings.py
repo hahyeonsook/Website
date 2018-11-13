@@ -146,6 +146,10 @@ SITE_ID = 1
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static"),
+)
+
 LOGIN_REDIRECT_URL = '/'    # 로그인 후 / 화면으로 돌아감
 LOGOUT_REDIRECT_URL = '/'    # 로그아웃 후 / 화면으로 돌아감
 
@@ -154,5 +158,7 @@ EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
 EMAIL_FILE_PATH = os.path.join(BASE_DIR, 'sent_emails')
 
 # 기타 파일
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+#MEDIA_URL = '/media/'
+#MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/static/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static/media')

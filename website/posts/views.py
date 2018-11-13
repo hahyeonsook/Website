@@ -19,6 +19,10 @@ class PostDetailView(DetailView):
 
 class CommentListView(ListView):
     model = Comment
+    content_object_name = 'latest_comment_list'
+
+    def get_queryset(self):
+        return Comment.objects.order_by('-pub_date')
 
 class CommentDetailView(DetailView):
     model = Comment

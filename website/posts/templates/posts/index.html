@@ -2,12 +2,18 @@
 
 {% block content %}
 
-<h2>게시물 목록</h2>
+<h1>게시물 목록</h1>
 
 {% if latest_post_list %}
     <ul>
     {% for post in latest_post_list %}
-        <li><a href="{{ post.pk }}/">{{ post.title }}</a></li>
+       <h2><a href="{{ post.pk }}/">{{ post.title }}</a></h2>
+
+       {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+       <p><img src="{{ post.image.url }}"/></p>
+       <h3>{{ post.pub_date }}</h3>
+       <h4>{{ post.content }}</h4>
     {% endfor %}
     </ul>
 {% else %}

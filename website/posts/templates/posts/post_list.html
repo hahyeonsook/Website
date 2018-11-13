@@ -1,0 +1,17 @@
+{% extends "base_posts.html" %}
+
+{% block content %}
+
+<h2>게시물 목록</h2>
+
+{% if latest_post_list %}
+    <ul>
+    {% for post in latest_post_list %}
+        <li><a href="{{ post.pk }}/">{{ post.title }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>게시물이 없습니다.</p>
+{% endif %}
+
+{% endblock content %}

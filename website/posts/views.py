@@ -42,7 +42,7 @@ class PostUpdateView(UpdateView):
 class PostDeleteView(DeleteView):
     model = Post
     template_name = 'posts/post_delete.html'
-    success_url = reverse_lazy('index')
+    success_url = reverse_lazy('posts:index')
 
 
 #--Comment View

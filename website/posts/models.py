@@ -7,7 +7,7 @@ from django.utils import timezone
 class Post(models.Model):
     title = models.CharField(max_length=100, default='Title')
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-#    comment = models.ForeignKey('Comment', on_delete=models.CASCADE)
+#    comment = models.ForeignKey(Comment.pk, on_delete=models.CASCADE)
     image = models.ImageField(upload_to='post')
 #    image = models.ForeignKey('Image', on_delete=models.CASCADE)
     content = models.CharField(max_length=100, default='Content')

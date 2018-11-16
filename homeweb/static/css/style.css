@@ -1,0 +1,23 @@
+
+.imgTitle{
+    position: relative;
+    width: 40px;
+}
+
+
+#dvTop{
+    height: 30px;
+    background: #f38b8c; /*분홍*/
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.sidebar{
+    height: 30px;
+    width: 100px;
+    background: #353535;
+    border-top: 2px double #FFFFFF; /*위 아래, 실선 흰색*/
+    border-bottom: 2px double #FFFFFF;
+
+    font: bold #FFFFFF;
+}

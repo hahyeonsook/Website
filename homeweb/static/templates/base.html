@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    {% load static %}
+    {% load account %}
+    {% load socialaccount %}
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
+    <title>{% block title %}부산놀자{% endblock %}</title>
+</head>
+
+<body>
+
+    <div id=dvTop>
+    <div style="height:40px; background-color:#f38b8c">
+        <a href="/"><img id="imgTitle" src="{% static "media/title.jpg" %}" height=40px></a>
+
+        {% if user.is_authenticated %}
+           {{ user.username }}님 <a href="/accounts.logout">로그아웃</a>
+        {% else %}
+            <a href="/accounts/login">로그인</a>
+        {% endif %}
+
+        <div align="right">
+        <div id="sidebar">
+            {% block sidebar %}
+            <ul>
+               <p><a href="/admin/">관리</a></p>
+            </ul>
+            {% endblock sidebar %}
+        </div>
+        </div>
+
+    </div>
+
+    <div id="content">
+    {% block content %}{% endblock content %}
+    </div>
+</body>
+</html>

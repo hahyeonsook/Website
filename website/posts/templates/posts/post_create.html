@@ -1,0 +1,14 @@
+{% extends "base_posts.html" %}
+
+{% block content %}
+
+<h1>새 게시물</h1>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="저장">
+</form>
+
+{% endblock %}
+

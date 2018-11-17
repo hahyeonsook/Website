@@ -1,0 +1,82 @@
+/* Default */
+ul, ol {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+
+/* Top navigation bar */
+nav.top-nav #top-nav:not(p) .search-hashtag-form{
+    background: #ffffeb;
+}
+nav.top-nav #top-nav:not(.in) .search-hashtag-form {
+    margin-top: 15px;
+}
+nav.top-nav #top-nav.collapsing .search-hashtag-form,
+nav.top-nav #top-nav.in .search-hashtag-form { /*.collapsing: 전환 도중 적용*/
+    margin-top: -1px;
+}
+nav.top-nav #top-nav:not(.in):not(.collapsing) .search-hashtag-form .search-hashtag-input {
+    font-size: 10px;
+    padding: 3px 10px;
+    height: 30px;
+    border: 0;
+    outline: none;
+}
+
+
+/* Post */
+.post-item .post-image {
+    background-color: #ffffeb; /*추가*/
+    width: 100%;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+
+}
+
+.post-item hr {
+    color: #d3d3d3; /*추가*/
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.post-item .comment-form input.content {
+    border: 0;
+    width: 100%;
+    outline: none;
+}
+
+.post-item .comment-list {
+    vertical-align: middle;
+}
+
+.post-item .comment-list .comment .comment-author {
+    font-weight: bold;
+    margin-right: 3px;
+}
+
+
+/**/
+.imgTitle{
+    position: relative;
+    width: 40px;
+}
+
+
+#dvTop{
+    height: 30px;
+    background: #f38b8c; /*분홍*/
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.sidebar{
+    height: 30px;
+    width: 100px;
+    background: #353535;
+    border-top: 2px double #FFFFFF; /*위 아래, 실선 흰색*/
+    border-bottom: 2px double #FFFFFF;
+
+    font: bold #FFFFFF;
+}

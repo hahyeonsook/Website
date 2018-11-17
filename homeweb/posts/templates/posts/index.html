@@ -1,0 +1,19 @@
+{% extends "base_posts.html" %}
+
+{% block content %}
+    <h2>게시물 목록</h2>
+    
+    {% if latest_post_list %}
+        {% for post in latest_post_list %}
+        <div class="panel panel-default post-item">
+            <a href="{{ post.pk }}/"> <img src="static/media/{{ post.img }}" alt="" class="post-image"></a>
+            {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+            <h6>{{ post.pub_date }}</h6>
+        </div>
+        {% endfor %}
+    {% else %}
+        <div class="panel panel-default post-item">
+        <p>게시물이 없습니다.</p>
+        </div>
+    {% endif %}
+{% endblock content %}

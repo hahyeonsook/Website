@@ -2,6 +2,8 @@
 <html lang="ko">
 <head>
     {% load static %}
+    {% load account %}
+    {% load socialaccount %}
     <link rel="stylesheet" href="{% static "admin/css/base.css" %}"/>
     <title>{% block title %}부산놀자{% endblock %}</title>
 </head>
@@ -12,7 +14,12 @@
         <ul>
             <li><a href="/">홈</a></li>
             <li><a href="/admin/">관리</a></li>
-            <li>북마크</li>
+            {% if user.is_authenticated %}
+                <li><a href="/bookmarks/">북마크</a></li>
+                <li>안녕하세요! {{ user.username }}님! <a href="/accounts/logout">로그아웃</a></li>
+            {% else %}
+                <li><a href="/accounts/login">로그인</a></li>
+            {% endif %}
         </ul>
         {% endblock %}
     </div>

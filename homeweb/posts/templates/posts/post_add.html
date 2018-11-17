@@ -1,0 +1,13 @@
+{% extends "base_posts.html" %}
+
+{% block content %}
+<h2>새로운 게시물</h2>
+<div class="panel panel-default post-item">
+<div class="post-create">
+
+    {% include 'include/form.html' with form=postForm submit_title='등록' enctype='file' %}
+    {% include 'include/form.html' with form=formset submit_title='등록' enctype='file' %}
+
+</div>
+</div>
+{% endblock content %}

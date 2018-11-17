@@ -1,0 +1,32 @@
+{% extends "base_posts.html" %}
+
+<form action"" method="GET">
+    <input type="text" name="q" value="{{ q }}">
+    <input type="submit" value="검색">
+</form>
+
+{% block content %}
+
+<p><a href="/posts/add/">작성</a></p>
+
+<h1>게시물 목록</h1>
+
+{% if latest_post_list %}
+    <ul>
+    {% for post in latest_post_list %}
+       <h2><a href="{{ post.pk }}/">{{ post.title }}</a></h2>
+
+       {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+       <p><img src="{{ post.image.url }}"/></p>
+       <h3>{{ post.pub_date }}</h3>
+       <p>{{ post.content }}</p>
+    {% endfor %}
+
+
+    </ul>
+{% else %}
+    <p>게시물이 없습니다.</p>
+{% endif %}
+
+{% endblock content %}

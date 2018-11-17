@@ -8,7 +8,7 @@ class Link(models.Model):
     def __str__(self):
         return self.url
 
-class Bookmarks(models.Model):
+class Bookmark(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     link = models.ForeignKey('Link', on_delete=models.CASCADE)
 #    pub_date = models.DateTimeField('date published')

@@ -2,23 +2,19 @@
 
 {% block content %}
 <h2>새로운 게시물</h2>
+<div class="panel panel-default post-item">
 <form id="post_form" method="POST" action="" enctype="multipart/form-data">
 
     {% csrf_token %}
-    {% for hidden in postForm.hidden_fields %}
-        {{ hidden }}
+    {% for inline_admin_formset in inline_admin_formsets %}
+        {% include inline_admin_formset.opts.template %}
     {% endfor %}
-
-    {% for field in postForm %}
-        <p><h3>{{ field.name }} {{ field }}</h3></p>
-    {% endfor %}
-
-    {{ formset.management_form }}
-    {% for form in formset %}
-        {{ form }}
-    {% endfor %}
-
+    <fieldset class="module">
+        <h3>사진 올리기</h3>
+        <input name="photos_multiple" type="file" multiple />
+    </fieldset>
 
     <p><input type="submit" name="submit" value="저장" /></p>
 </form>
+</div>
 {% endblock content %}

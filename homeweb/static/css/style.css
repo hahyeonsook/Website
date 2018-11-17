@@ -47,6 +47,7 @@ nav.top-nav #top-nav:not(.in):not(.collapsing) .search-hashtag-form .search-hash
 }
 
 .post-item .post-image {
+    background-color: #ffffeb; /*추가*/
     width: 100%;
     border-top-left-radius: 2px;
     border-top-right-radius: 2px;

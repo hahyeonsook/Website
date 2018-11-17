@@ -14,8 +14,10 @@ urlpatterns = [
     # /99/delete/
 
     # /add/
-#    path('add/', views.PostFormView.as_view(), name='post_form')
-    path('add/', views.post, name='post_form'),
+    path('add/', views.post_form, name='post_form'),
+
+    # /99/comment/add/
+    path('<int:pk>/comment/add/', views.comment_form, name='comment_form'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

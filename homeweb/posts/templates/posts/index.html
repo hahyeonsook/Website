@@ -1,17 +1,26 @@
 {% extends "base_posts.html" %}
 
 {% block content %}
-<div class="container">
-
     <h2>게시물 목록</h2>
     
-    <div class="panel panel-default post-item">
-
-        <div class="panel-body">
-            댓글 url 연결
-            {% csrf_token %}
+    {% if latest_post_list %}
+        {% for post in latest_post_list %}
+        <div class="panel panel-default post-item">
+            <h4><a href="{{ post.pk }}/"><tb>{{ post.title }}</a></h4>
+            {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+            <img src="static/media/{{ post.img }}" alt="" class="post-image"><br/>
+            <h6>{{ post.pub_date }}</h6>
+            <div class="panel-body">
+                <form action="{% url 'posts:comment_form' pk=post.pk %}" method="POST" class="comment-form">
+                   {% csrf_token %}
+                   <input type="text" name="content" placeholder="댓글" outline="none">
+                </form>
+            </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="panel panel-default post-item">
+        <p>게시물이 없습니다.</p>
         </div>
-    </div>
-
-</div>
+    {% endif %}
 {% endblock content %}

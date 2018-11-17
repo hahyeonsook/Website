@@ -9,20 +9,6 @@
             <a href="{{ post.pk }}/"> <img src="static/media/{{ post.img }}" alt="" class="post-image"></a>
             {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
             <h6>{{ post.pub_date }}</h6>
-            <div class="panel-body">
-                {% if post.comments.exist %}
-                <ul class="comment-list">
-                    {% for comment in post.comments.all %}
-                    <li class="comment">
-                        <span class="comment-author">{{ comment.user }}</span>
-                        <span class="comment-content">{{ comment.content }}</span>
-                    </li>
-                    {% endfor %}
-                </ul>
-                <hr>
-                {% endif %}
-
-            </div>
         </div>
         {% endfor %}
     {% else %}

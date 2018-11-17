@@ -7,6 +7,7 @@ from .models import Post, Image, Comment
 
 
 #--BaseView
+# Post
 class PostListView(ListView):
     model = Post
     template_name = 'posts/index.html'
@@ -16,6 +17,7 @@ class PostListView(ListView):
          return Post.objects.order_by('-pub_date')
 
 #--View def
+# Post
 def post_form(request):
     ImageFormSet = formset_factory(ImageForm, extra=5, max_num=1)    # 같은 페이지에서 여러 양식으로 작업하는 추상화 계층, extra=n n개의 공백 양식을 표시, 
 
@@ -45,6 +47,21 @@ def post_form(request):
     context = {'postForm': postForm, 'formset': formset}
     return render(request, 'posts/post_form.html', context)
 
+def post_detail(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    images = Image.objects.filter(post_id=pk)
+    comments = Comment.objects.filter(post_id=pk)
+    comment_form = CommentForm()
+    context = {
+        'post': post,
+        'comments': comments,
+        'images': images,
+        'comment_form': comment_form,
+    }
+
+    return render(request, 'posts/post_detail.html', context)
+
+# Comment
 def comment_form(request, pk):
     # 요청 메서드가 POST 방식일 때만 처리
     if request.method == 'POST':
@@ -56,9 +73,24 @@ def comment_form(request, pk):
         if form.is_valid():
             # 유효성 검사에 통과하면 ModelForm의 save()호출로 인스턴스 생성
             # DB에 저장하지 않고 인스턴스만 생성하기 위해 commit=False옵션 지정
-            comment = comment_form.save(commit=False)
+            comment = form.save(commit=False)
             # CommentForm에 지정되지 않았으나 필수요소인 author와 post속성을 지정
             comment.post = post
-            comment.author = request.user
+            comment.user = request.user
             # DB에 저장
             comment.save()
+
+            # 성공 메시지를 다음 request의 결과로 전달하도록 지정
+            messages.success(request, '댓글이 등록되었습니다.')
+
+        else:
+            # 유효성 검사에 실패한 경우
+            # 에러 목록을 순회하며 에러메시지를 작성, messages의 error 레벨로 추가
+            error_msg = '댓글 등록에 실패했습니다\n{}'.format (
+                '\n'.join (
+                    ['-{error}'
+                    for key, vlaue in form.errors.items()
+                    for error in value]))
+            messages.error(request, error_msg)
+
+        return HttpResponseRedirect("/")

@@ -10,6 +10,7 @@ urlpatterns = [
     path('', views.PostListView.as_view(), name='index'),
 
     # /99/
+    path('<int:pk>/', views.post_detail, name='post_detail'),
     # /99/update/
     # /99/delete/
 

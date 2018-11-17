@@ -5,26 +5,12 @@ ul, ol {
     list-style-type: none;
 }
 
-/* Top */
-.top-title {
-    height: 40px
-    background-color: #f38b8c;
-}
-.top-title .top-title-image {
-    height: 40px
-    display: table;
-    margin-left: auto;
-    margin-right: auto;
-    display: inline-block;
-}
-.top-title .top-title-nav {
-    font-weight: 2px
-    font-size: 10px;
-    color: #FFFFFF;
-}
-
 
 /* Top navigation bar */
+nav.navbar-custom .top-nav{
+    background-color: #ffffeb;
+}
+
 nav.top-nav #top-nav:not(.in) .search-hashtag-form {
     margin-top: 15px;
 }

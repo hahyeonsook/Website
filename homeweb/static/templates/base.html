@@ -12,11 +12,13 @@
 
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
     <title>{% block title %}부산놀자{% endblock %}</title>
 </head>
 
 <body>
-    <div class="top top-defalut top-title">
+ <!--   <div class="top top-defalut top-title">
     <div style="height: 40px; background-color: #f38b8c"
         <a href="/"><img src="{% static 'media/title.jpg' %}" height="40px"></a>
         <div class="top-body top-title-nav">
@@ -39,9 +41,46 @@
 
 
 
-
+-->
+<nav class="top-nav navbar navbar-static-top navbar-default">
     <div class="container">
+        <div class="navbar-header">
+            <a href="{% url 'posts:index' %}" class="navbar-brand">부산놀자</a>
+        </div>
+
+        <div class="collapse navbar-collapse">
+            <form action="" class="navbar-form navbar-left search-hashtag-form" role="search">
+            <div class="form-group">
+                <input type="text" class="form-control search-hashtag-input" placeholder="검색">
+            </div>
+            </form>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="">Likes</a></li>
+                <li><a href="">Profile</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    <div class="container">
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert-message alert
+            {% if message.tags == 'info' %}
+                alert-info
+            {% elif message.tags == 'success' %}
+                alert-success
+            {% elif message.tags == 'warning' %}
+                alert-warning
+            {% elif message.tags == 'error' %}
+                alert-danger
+            {% endif %}
+            ">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+
     {% block content %}{% endblock content %}
     </div>
 </body>
+
+
 </html>

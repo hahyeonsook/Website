@@ -54,10 +54,11 @@ def comment_form(request, pk):
         form = CommentForm(request.POST)
 
         if form.is_valid():
-            Comment.objects.create (
-                post = post,
-                user = request.user,
-                content=form.cleaned_data['content']
-            )
-
-        return HttpResponseRedirect('/')
+            # 유효성 검사에 통과하면 ModelForm의 save()호출로 인스턴스 생성
+            # DB에 저장하지 않고 인스턴스만 생성하기 위해 commit=False옵션 지정
+            comment = comment_form.save(commit=False)
+            # CommentForm에 지정되지 않았으나 필수요소인 author와 post속성을 지정
+            comment.post = post
+            comment.author = request.user
+            # DB에 저장
+            comment.save()

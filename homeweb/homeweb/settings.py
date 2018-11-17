@@ -21,6 +21,15 @@ ROOT_DIR = os.path.dirname(BASE_DIR)
 CONFIG_SECRET_DIR = os.path.join(ROOT_DIR, '.config_secret')
 secret_file = os.path.join(CONFIG_SECRET_DIR, 'secrets.json') # secrets.json 파일 위치를 명시
 
+# Whoosh 사용을 위함
+WHOOSH_INDEX = os.path.join(BASE_DIR, 'whoosh_index')
+
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
+        'PATH': WHOOSH_INDEX,
+    },
+}
 
 # 비밀 키를 가져오기 위한 함수
 with open(secret_file) as f:
@@ -70,6 +79,9 @@ INSTALLED_APPS = [
 #    'allauth.socialaccount.providers.line',
 #    'allauth.socialaccount.providers.naver',
 #    'allauth.socialaccount.providers.twitter',
+
+    # 검색 엔진
+    'haystack',
 
     'posts.apps.PostsConfig',
 ]

@@ -1,4 +1,81 @@
+/* Default */
+ul, ol {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
 
+/* Top */
+.top-title {
+    height: 40px
+    background-color: #f38b8c;
+}
+.top-title .top-title-image {
+    height: 40px
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+    display: inline-block;
+}
+.top-title .top-title-nav {
+    font-weight: 2px
+    font-size: 10px;
+    color: #FFFFFF;
+}
+
+
+/* Top navigation bar */
+nav.top-nav #top-nav:not(.in) .search-hashtag-form {
+    margin-top: 15px;
+}
+nav.top-nav #top-nav.collapsing .search-hashtag-form,
+nav.top-nav #top-nav.in .search-hashtag-form {
+    margin-top: -1px;
+}
+nav.top-nav #top-nav:not(.in):not(.collapsing) .search-hashtag-form .search-hashtag-input {
+    font-size: 10px;
+    padding: 3px 10px;
+    height: 30px;
+    border: 0;
+    outline: none;
+}
+
+
+/* Post */
+.post { /*추가*/
+    background-color: #ffffeb;
+}
+
+.post-item .post-image {
+    width: 100%;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+
+}
+
+.post-item hr {
+    color: #d3d3d3; /*추가*/
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.post-item .comment-form input.content {
+    border: 0;
+    width: 100%;
+    outline: none;
+}
+
+.post-item .comment-list {
+    vertical-align: middle;
+}
+
+.post-item .comment-list .comment .comment-author {
+    font-weight: bold;
+    margin-right: 3px;
+}
+
+
+/**/
 .imgTitle{
     position: relative;
     width: 40px;

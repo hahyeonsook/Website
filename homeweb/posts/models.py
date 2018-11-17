@@ -19,7 +19,6 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
-
 class Image(models.Model):
     post = models.ForeignKey('Post', default=None, on_delete=models.CASCADE)
     image = models.ImageField(upload_to='post_images', verbose_name='Image')

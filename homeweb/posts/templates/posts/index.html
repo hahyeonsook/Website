@@ -1,5 +1,17 @@
 {% extends "base_posts.html" %}
 
 {% block content %}
-<h1>게시물 목록</h1>
+<div class="container">
+
+    <h2>게시물 목록</h2>
+    
+    <div class="panel panel-default post-item">
+
+        <div class="panel-body">
+            댓글 url 연결
+            {% csrf_token %}
+        </div>
+    </div>
+
+</div>
 {% endblock content %}

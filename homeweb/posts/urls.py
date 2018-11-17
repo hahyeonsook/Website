@@ -15,7 +15,7 @@ urlpatterns = [
     # /99/delete/
 
     # /add/
-    path('add/', views.post_form, name='post_form'),
+    path('add/', views.post_add, name='post_add'),
 
     # /99/comment/add/
     path('<int:pk>/comment/add/', views.comment_form, name='comment_form'),

@@ -1,9 +1,11 @@
-from django.shortcuts import render, get_object_or_404, redirect
-from django.http import HttpResponseRedirect, HttpResponse
+from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponseRedirect
 from django.forms import formset_factory
 from django.views.generic import ListView
-from .forms import PostForm, ImageForm, CommentForm
-from .models import Post, Image, Comment
+from django.contrib import messages
+from django.urls import reverse
+from .forms import *
+from .models import *
 
 
 #--BaseView
@@ -18,7 +20,7 @@ class PostListView(ListView):
 
 #--View def
 # Post
-def post_form(request):
+def post_add(request): #변경
     ImageFormSet = formset_factory(ImageForm, extra=5, max_num=1)    # 같은 페이지에서 여러 양식으로 작업하는 추상화 계층, extra=n n개의 공백 양식을 표시, 
 
     if request.method == 'POST':
@@ -45,7 +47,8 @@ def post_form(request):
         formset = ImageFormSet(Image.objects.none())
 
     context = {'postForm': postForm, 'formset': formset}
-    return render(request, 'posts/post_form.html', context)
+    return render(request, 'posts/post_add.html', context)
+
 
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
@@ -60,6 +63,7 @@ def post_detail(request, pk):
     }
 
     return render(request, 'posts/post_detail.html', context)
+
 
 # Comment
 def comment_form(request, pk):
@@ -93,4 +97,4 @@ def comment_form(request, pk):
                     for error in value]))
             messages.error(request, error_msg)
 
-        return HttpResponseRedirect("/")
+        return HttpResponseRedirect(reverse('posts:post_detail', args=(post.id,)))

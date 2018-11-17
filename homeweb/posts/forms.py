@@ -19,6 +19,7 @@ class ImageForm(forms.ModelForm):
         model = Image
         fields = ['image', ]
 
+# Comment
 class CommentForm(forms.ModelForm):
     content = forms.CharField(
         widget=forms.TextInput(
@@ -44,10 +45,11 @@ class CommentForm(forms.ModelForm):
             raise forms.ValidationError(errors)
         return data
 
+
 #--def Form
 # Post
 def post_form(request):
-    ImageFormSet = formset_factory(ImageForm, extra=5, max_num=1)    # 같은 페이지에서 여러 양식으로 작업하는 추상화 계층, extra=n n개의 공백 양식을 표시, 
+    ImageFormSet = formset_factory(ImageForm, extra=5)    # 같은 페이지에서 여러 양식으로 작업하는 추상화 계층, extra=n n개의 공백 양식을 표시, 
 
     if request.method == 'POST':
         postForm = PostForm(request.POST)    # request.POST는 키로 전송된 자료에 접근할 수 있도록 해주는 사전과 같은 역할

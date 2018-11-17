@@ -17,9 +17,6 @@ from django.core.exceptions import ImproperlyConfigured
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ROOT_DIR = os.path.dirname(BASE_DIR)
 
-# STATIC 폴더
-# BASE_DIR = os.path.join(BASE_DIR, 'static')
-
 # .config_secret 폴더 및 하위 파일 경로
 CONFIG_SECRET_DIR = os.path.join(ROOT_DIR, '.config_secret')
 secret_file = os.path.join(CONFIG_SECRET_DIR, 'secrets.json') # secrets.json 파일 위치를 명시

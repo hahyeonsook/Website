@@ -182,6 +182,9 @@ MEDIA_URL = '/static/media/'
 LOGIN_REDIRECT_URL = '/'    # 로그인 후 / 화면으로 돌아감
 LOGOUT_REDIRECT_URL = '/'    # 로그아웃 후 / 화면으로 돌아감
 
+# LOGIN/LOGOUT
+LOGIN_URL = 'accounts/login'
+
 # PASSWORD 재설정 이메일
 EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
 EMAIL_FILE_PATH = os.path.join(ROOT_DIR, 'sent_emails')

@@ -3,18 +3,11 @@
 {% block content %}
 <h2>새로운 게시물</h2>
 <div class="panel panel-default post-item">
-<form id="post_form" method="POST" action="" enctype="multipart/form-data">
+<div class="post-create">
 
-    {% csrf_token %}
-    {% for inline_admin_formset in inline_admin_formsets %}
-        {% include inline_admin_formset.opts.template %}
-    {% endfor %}
-    <fieldset class="module">
-        <h3>사진 올리기</h3>
-        <input name="photos_multiple" type="file" multiple />
-    </fieldset>
+    {% include 'include/form.html' with form=postForm submit_title='등록' enctype='file' %}
+    {% include 'include/form.html' with form=formset submit_title='등록' enctype='file' %}
 
-    <p><input type="submit" name="submit" value="저장" /></p>
-</form>
+</div>
 </div>
 {% endblock content %}

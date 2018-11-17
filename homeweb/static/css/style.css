@@ -7,15 +7,14 @@ ul, ol {
 
 
 /* Top navigation bar */
-nav.navbar-custom .top-nav{
-    background-color: #ffffeb;
+nav.top-nav #top-nav:not(p) .search-hashtag-form{
+    background: #ffffeb;
 }
-
 nav.top-nav #top-nav:not(.in) .search-hashtag-form {
     margin-top: 15px;
 }
 nav.top-nav #top-nav.collapsing .search-hashtag-form,
-nav.top-nav #top-nav.in .search-hashtag-form {
+nav.top-nav #top-nav.in .search-hashtag-form { /*.collapsing: 전환 도중 적용*/
     margin-top: -1px;
 }
 nav.top-nav #top-nav:not(.in):not(.collapsing) .search-hashtag-form .search-hashtag-input {
@@ -28,10 +27,6 @@ nav.top-nav #top-nav:not(.in):not(.collapsing) .search-hashtag-form .search-hash
 
 
 /* Post */
-.post { /*추가*/
-    background-color: #ffffeb;
-}
-
 .post-item .post-image {
     background-color: #ffffeb; /*추가*/
     width: 100%;

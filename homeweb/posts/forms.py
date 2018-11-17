@@ -1,7 +1,16 @@
 from django import forms
+from django.urls import reverse
 from .models import *
 
 #--ModelForm
+# Image
+class ImageForm(forms.ModelForm):
+    image = forms.ImageField(label='사진')
+
+    class Meta:
+        model = Image
+        fields = ['image', ]
+
 # Post
 class PostForm(forms.ModelForm):
     title = forms.CharField(max_length=50, label='제목')
@@ -12,12 +21,7 @@ class PostForm(forms.ModelForm):
         model = Post
         fields = ['title', 'img', 'content', 'user']
 
-class ImageForm(forms.ModelForm):
-    image = forms.ImageField(label='사진')
 
-    class Meta:
-        model = Image
-        fields = ['image', ]
 
 # Comment
 class CommentForm(forms.ModelForm):
@@ -66,7 +70,7 @@ def post_form(request):
                 photo.save()
             messages.success(request, "홈페이지에서 확인하세요.")
 
-            return HttpResponseRedirect("/")    # /으로 돌아감
+            return HttpResponseRedirect(reverse('posts:index'))    # /으로 돌아감
 
         else:    # post가 없거나 image가 없으면
             print(postForm.errors, formset.errors)    # error

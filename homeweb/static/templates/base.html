@@ -18,30 +18,7 @@
 </head>
 
 <body>
- <!--   <div class="top top-defalut top-title">
-    <div style="height: 40px; background-color: #f38b8c"
-        <a href="/"><img src="{% static 'media/title.jpg' %}" height="40px"></a>
-        <div class="top-body top-title-nav">
-            {% if user.is_authenticated %}
-                {{ user.username }}님_<a href="/accounts/logout">로그아웃</a>
-            {% else %}
-                <a href="/accounts/login">로그인</a>
-            {% endif %}
-        </div>
 
-        <div id="sidebar">
-            {% block sidebar %}
-            <ul>
-               <p><a href="/admin/">관리</a></p>
-               <p><a href="/add/">새 게시물 작성</a></p>
-            </ul>
-            {% endblock sidebar %}
-        </div>
-    </div>
-
-
-
--->
 <nav class="top-nav navbar navbar-static-top navbar-default">
     <div class="container">
         <div class="navbar-header">
@@ -55,8 +32,14 @@
             </div>
             </form>
             <ul class="nav navbar-nav navbar-right">
+                {% if user.is_authenticated %}
                 <li><a href="">Likes</a></li>
                 <li><a href="">Profile</a></li>
+                <li><a href="accounts/logout">Logout</a></li>
+                {% else %}
+                <li><a href="accounts/login">Login</a></li>
+                <li><a href="">Signup</a></li>
+                {% endif %}
             </ul>
         </div>
     </div>

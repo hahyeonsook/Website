@@ -6,7 +6,7 @@
     {% if latest_post_list %}
         {% for post in latest_post_list %}
         <div class="panel panel-default post-item">
-            <a href="{{ post.pk }}/"> <img src="static/media/{{ post.img }}" alt="" class="post-image"></a>
+            <a href="{% url 'posts:post_detail' post.pk %}"> <img src="{{ post.img.url }}" alt="" class="post-image"></a>
             {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
             <h6>{{ post.pub_date }}</h6>
         </div>

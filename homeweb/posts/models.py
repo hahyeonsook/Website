@@ -8,7 +8,7 @@ class Post(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     pub_date = models.DateTimeField(default=timezone.now)
     img = models.ImageField(upload_to='media/post_images', verbose_name='Image')
-    content = models.CharField(max_length=100, default=None)
+    content = models.TextField(default=None)
     #tags = models.ManyToManyField('Tag')
 
     # 이미지 이름 지정 post_images 폴더에 이름지정해서 넣기

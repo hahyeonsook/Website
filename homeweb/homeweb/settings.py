@@ -26,8 +26,11 @@ WHOOSH_INDEX = os.path.join(BASE_DIR, 'whoosh_index')
 
 HAYSTACK_CONNECTIONS = {
     'default': {
-        'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
-        'PATH': WHOOSH_INDEX,
+#        'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
+        'ENDINE': 'haystack.backends.elasticsearch5_backend.Elasticsearch5SearchEngine',
+#        'PATH': WHOOSH_INDEX,
+        'URL': 'http://127.0.0.1:9200/',
+        'INDEX_NAME': 'haystack',
     },
 }
 
@@ -82,6 +85,7 @@ INSTALLED_APPS = [
 
     # 검색 엔진
     'haystack',
+    'elasticsearch',
 
     'posts.apps.PostsConfig',
 ]

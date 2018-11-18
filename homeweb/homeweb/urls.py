@@ -9,5 +9,5 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('', include('posts.urls')),
     # 검색
-    path('search/', include('haystack.urls')),
+#    path('search/', include('haystack.urls')),
 ]

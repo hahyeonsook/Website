@@ -22,7 +22,7 @@
 
         {% if images %}
             {% for image in images %}
-                <p><img src="{{ image.url }}" alt="안뜸" class="post-image"></p>
+                <img src="{{ image.image.url }}" alt="안뜸" class="post-image">
             {% endfor %}
         {% else %}
              <p>사진이 없습니다.</p>

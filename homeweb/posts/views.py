@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, JsonResponse
 from django.forms import modelformset_factory
 from django.views.generic import ListView
 from django.contrib import messages
@@ -8,8 +8,10 @@ from django.urls import reverse
 from .forms import *
 from .models import *
 
+from haystack.generic_views import SearchView
+from haystack.query import SearchQuerySet
 
-#--BaseView
+#--View class
 # Post
 class PostListView(ListView):
     model = Post
@@ -18,6 +20,34 @@ class PostListView(ListView):
 
     def get_queryset(self):
          return Post.objects.order_by('-pub_date')
+"""
+# Search Post List
+class JSONResponseMixin:
+    def render_to_json_response(self, context, **response_kwargs):
+        return JsonResponse(
+            self.get_data(context),
+            **response_kwargs
+        )
+
+    def get_data(self, context):
+        context = {'query': context['query']}
+        return context
+
+class ContentSearch(SearchView, JSONResponseMixin):
+    def render_to_response(self, context, **response_kwargs):
+
+        if self.request.is_ajax():
+            sqs = SearchQuerySet().autocomplete(content_auto=self.request.GET.get('q', ''))[:5]
+            suggestions = [result.username for result in sqs]
+
+            # 기본 목록이 아닌 JSON 객체를 반환해야 한다.
+            # 그렇지 않으면 XSS 공격에 취약할 수 있다.
+            context = {'results': suggestions}
+
+            return JsonResponse(context, safe=False)
+         return render(self.request, 'search/search.html')
+
+"""
 
 #--View def
 # Post
@@ -63,8 +93,10 @@ def post_add(request): #변경
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
     images = Image.objects.filter(post_id=pk)
+
     comments = Comment.objects.filter(post_id=pk)
     comment_form = CommentForm()
+
     context = {
         'post': post,
         'comments': comments,

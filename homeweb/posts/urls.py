@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from . import views
@@ -11,6 +11,10 @@ urlpatterns = [
 
     # /add/
     path('add/', views.post_add, name='post_add'),
+    # /search/
+    path('search/', include('haystack.urls'), name="content_search"),
+#    path('search/', views.ContentSearch, name='content_search'),
+#    path('search/', views.ContentSearch.as_view(), name='content_search')
 
     # /99/
     path('<int:pk>/', views.post_detail, name='post_detail'),

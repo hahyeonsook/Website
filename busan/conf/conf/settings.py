@@ -39,7 +39,6 @@ def get_secret(setting, secrets=secrets):
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = get_secret("SECRET_KEY")
-'w+-$5r5ls#55#kll*3*1+9pug0c+$7$b5%zgdr3nd#o7yr8nvt'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -56,6 +55,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # Django optional framework
+    'django.contrib.sites',
+
+    # Open source
+
+    # MyApp
 ]
 
 MIDDLEWARE = [
@@ -73,12 +79,12 @@ ROOT_URLCONF = 'conf.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'static/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
-                'django.template.context_processors.request',
+                'django.template.context_processors.request',  # 'allauth' 는 이 장고 폼을 필요
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
@@ -124,7 +130,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Seoul'
 
 USE_I18N = True
 
@@ -133,7 +139,28 @@ USE_L10N = True
 USE_TZ = True
 
 
+# 오픈 소스 설정
+
+
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static"),
+)
+
+MEDIA_DIR = os.path.join(BASE_DIR, "static/media")
+MEDIA_ROOT = os.path.dirname(MEDIA_DIR)
+MEDIA_URL = '/static/media/'
+
+
+# Redirect 설정
+LOGIN_REDIRECT_URL = '/'    # 로그인 후 / 화면으로 돌아감
+LOGOUT_REDIRECT_URL = '/'    # 로그아웃 후 / 화면으로 돌아감
+
+# LOGIN/LOGOUT
+LOGIN_URL = 'accounts/login'
+LOGOUT_URL = 'accounts/logout'
+

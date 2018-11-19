@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os, json
-from django.core.exceptions import ImproperlyConfigured
+from django.core.exceptions import ImproperlyConfigured  # 아직 적용 안함
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -21,7 +21,7 @@ ROOT_DIR = os.path.dirname(BASE_DIR)
 CONFIG_SECRET_DIR = os.path.join(ROOT_DIR, '.config_secret')
 secret_file = os.path.join(CONFIG_SECRET_DIR, 'secrets.json') # secrets.json 파일 위치를 명시
 
-# Whoosh 사용을 위함
+# Whoosh 사용을 위함 # 아직 적용 안함
 WHOOSH_INDEX = os.path.join(BASE_DIR, 'whoosh_index')
 
 HAYSTACK_CONNECTIONS = {
@@ -69,6 +69,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',    # 추가
 
+    # 아직 적용 안함
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -83,7 +84,7 @@ INSTALLED_APPS = [
 #    'allauth.socialaccount.providers.naver',
 #    'allauth.socialaccount.providers.twitter',
 
-    # 검색 엔진
+    # 검색 엔진 # 아직 적용 안함
     'haystack',
     'elasticsearch',
 
@@ -167,7 +168,7 @@ USE_TZ = True
 
 
 
-# 추가
+# 추가  # 아직 적용 안함
 AUTHENTICATION_BACKENDS = (
     # allauth에 관계없이 장고 관리자의 사용자 이름으로 로그인해야 한다.
     "django.contrib.auth.backends.ModelBackend",
@@ -198,6 +199,6 @@ LOGOUT_REDIRECT_URL = '/'    # 로그아웃 후 / 화면으로 돌아감
 # LOGIN/LOGOUT
 LOGIN_URL = 'accounts/login'
 
-# PASSWORD 재설정 이메일
+# PASSWORD 재설정 이메일 # 아직 적용 안함
 EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
 EMAIL_FILE_PATH = os.path.join(ROOT_DIR, 'sent_emails')

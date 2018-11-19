@@ -8,7 +8,7 @@ class Post(models.Model):
     title = models.CharField(max_length=50, default=None)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     pub_date = models.DateTimeField(default=timezone.now)
-    img = models.ImageField(upload_to='media/post_images', verbose_name='Image')
+    img = models.ImageField(upload_to='post_images', verbose_name='Image')
     content = models.TextField(default=None)
     #tags = models.ManyToManyField('Tag')
 
@@ -23,7 +23,7 @@ class Post(models.Model):
 
 class Image(models.Model):
     post = models.ForeignKey('Post', default=None, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='media/post_images', verbose_name='Image')
+    image = models.ImageField(upload_to='post_images', verbose_name='Image')
 
 
 class Comment(models.Model):

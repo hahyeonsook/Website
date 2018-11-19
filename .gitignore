@@ -31,3 +31,7 @@ venv/
 
 # 로컬 post_images 제외
 *.jpg
+
+# db 파일 제외
+db.sqlite3
+

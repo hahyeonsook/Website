@@ -1,0 +1,25 @@
+# 실행 파일 제외
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# 로그, 업로드 파일 제외
+*.log
+upload/
+logs/
+
+# 운영체제별 시스템 파일 제외
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# 설정 파일 제외
+.conf_secret/
+.config_secret/

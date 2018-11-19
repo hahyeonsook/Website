@@ -30,4 +30,4 @@ Thumbs.db
 venv/
 
 # 로컬 post_images 제외
-post_image/*jpg
+*.jpg

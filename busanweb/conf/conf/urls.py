@@ -4,7 +4,7 @@ from django.urls import path, include
 from posts import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls, name='admin'),
     path('', include('posts.urls')),
 ]
 

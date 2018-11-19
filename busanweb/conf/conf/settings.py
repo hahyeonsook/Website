@@ -16,7 +16,7 @@ import os, json
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ROOT_DIR = os.path.dirname(BASE_DIR)
 
-# .config_secret 폴더 및 하위 파일 경로
+# .conf_secret 폴더 및 하위 파일 경로
 CONFIG_SECRET_DIR = os.path.join(ROOT_DIR, '.conf_secret')
 secret_file = os.path.join(CONFIG_SECRET_DIR, 'secrets.json') # secrets.json 파일 위치를 명시
 
@@ -57,10 +57,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    # Django optional Framework
-    'django.contrib.sites', 
+    # Django option Framwork
+    'django.contrib.sites',
 
-    
+    # My App
+    'posts.apps.PostsConfig',
 ]
 
 MIDDLEWARE = [
@@ -83,7 +84,7 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
-                'django.template.context_processors.request',   # 'allauth' 는 이 장고 폼을 필요
+                'django.template.context_processors.request',  # 'allauth' 는 이 장고 폼을 필요
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
@@ -142,12 +143,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
-"""
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
-"""
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 MEDIA_DIR = os.path.join(BASE_DIR, "static/media")
 MEDIA_ROOT = os.path.dirname(MEDIA_DIR)
@@ -160,4 +158,3 @@ LOGOUT_REDIRECT_URL = '/'    # 로그아웃 후 / 화면으로 돌아감
 
 # LOGIN/LOGOUT
 LOGIN_URL = 'accounts/login'
-LOGOUT_URL = 'account/logout'

@@ -60,6 +60,10 @@ INSTALLED_APPS = [
     # Django option Framwork
     'django.contrib.sites',
 
+    # Open Library
+    # https://github.com/Fantomas42/django-tagging/blob/develop/README.rst
+    'tagging',
+
     # My App
     'posts.apps.PostsConfig',
 ]
@@ -152,7 +156,7 @@ STATICFILES_DIRS = (
 MEDIA_DIR = os.path.join(BASE_DIR, "static/media")
 MEDIA_ROOT = os.path.dirname(MEDIA_DIR)
 MEDIA_URL = '/static/media/'
-
+f
 
 # Redirect 설정
 LOGIN_REDIRECT_URL = '/'    # 로그인 후 / 화면으로 돌아감
@@ -160,3 +164,7 @@ LOGOUT_REDIRECT_URL = '/'    # 로그아웃 후 / 화면으로 돌아감
 
 # LOGIN/LOGOUT
 LOGIN_URL = 'accounts/login'
+
+# TAG 설정
+FORCE_LOWERCASE_TAGS = False
+MAX_TEG_LENGTH = 50

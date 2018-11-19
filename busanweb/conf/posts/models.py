@@ -2,6 +2,8 @@ from django.db import models
 from django.conf import settings
 from django.utils import timezone
 
+from tagging.fields import TagField
+
 # Create your models here.
 
 class Post(models.Model):
@@ -10,9 +12,11 @@ class Post(models.Model):
     pub_date = models.DateTimeField(default=timezone.now)
     img = models.ImageField(upload_to='post_images', verbose_name='Image')
     content = models.TextField(default=None)
-    #tags = models.ManyToManyField('Tag')
 
-    # 이미지 이름 지정 post_images 폴더에 이름지정해서 넣기
+    # Open Library Tagging
+    tags = TagField('태그', help_text='tag1, tag2, tag3')
+
+    # 이미지 이름 지정 post_images 폴더에 이름 지정해서 넣기
     def get_image_filename(instance, filename):
         title = instance.post.title
         slug = slugify(title)

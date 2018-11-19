@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
-    {% block exterlinks %}{% endblock exterlinks%}
 
     <title>{% block title %}부산놀자{% endblock title%}</title>
 </head>
@@ -37,6 +36,9 @@
             <ul class="nav navbar-nav navbar-right">
                 {% if user.is_authenticated %}
                 <li><a href="">Likes</a></li>
+                {% if user.is_superuser %}
+                    <li><a href="{% url ':admin' %}">Manage</a></li>
+                {% endif %}
                 <li><a href="accounts/logout">Logout</a></li>
                 {% else %}
                 <li><a href="accounts/login">Login</a></li>

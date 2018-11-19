@@ -5,12 +5,11 @@ from .models import Post, Comment, Image
 # Register your models here.
 
 class ImageAdmin(admin.StackedInline):
-    model = Post
+    model = Image
     extra = 5
 
 class PostAdmin(admin.ModelAdmin):
     model = Post
-    inlines = [ ImageAdmin, ]
 
 admin.site.register(Post, PostAdmin)
 admin.site.register(Comment)

@@ -72,6 +72,7 @@ INSTALLED_APPS = [
 
     # My App
     'posts.apps.PostsConfig',
+#    'users.apps.UsersConfig',
 ]
 
 MIDDLEWARE = [
@@ -188,3 +189,6 @@ MAX_TEG_LENGTH = 50
 ACCOUNT_USER_MODEL_USERNAME_REQUIRED = True
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
+
+# User 설정
+# AUTH_USER_MODEL = 'users.CustomUser'

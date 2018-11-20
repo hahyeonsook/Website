@@ -15,7 +15,7 @@ urlpatterns = [
     path('<int:pk>/comment/add', views.comment_form, name='comment_form'),
 
     # /search/
-    path('search/', include('haystack.urls')),
+    path('search/', include('haystack.urls'), name='search'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

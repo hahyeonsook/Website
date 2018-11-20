@@ -11,9 +11,11 @@ urlpatterns = [
 
     # /99/
     path('<int:pk>/', views.post_detail, name='post_detail'),
-
     # /99/comment/add/
     path('<int:pk>/comment/add', views.comment_form, name='comment_form'),
+
+    # /search/
+    path('search/', include('haystack.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

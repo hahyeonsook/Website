@@ -6,6 +6,9 @@ from posts import views
 urlpatterns = [
     path('admin/', admin.site.urls, name='admin'),
     path('', include('posts.urls')),
+
+    # 로그인
+    path('accounts/', include('allauth.urls')),
 ]
 
 

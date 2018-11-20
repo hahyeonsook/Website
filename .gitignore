@@ -27,7 +27,7 @@ Thumbs.db
 .config_secret/
 
 # 가상환경 폴더 제외
-venv/
+# venv/
 
 # 로컬 post_images 제외
 *.jpg

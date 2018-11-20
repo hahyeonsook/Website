@@ -25,6 +25,10 @@
         {% else %}
              <p>사진이 없습니다.</p>
         {% endif %}
+
+        {% if user.is_superuser %}
+             <li><a href="">수정</a></li>
+        {% endif %}
         </ul>
 
         <div class="panel-body">
@@ -32,7 +36,7 @@
             <ul class="comment-list">
                 {% for comment in comments %}
                 <li class="comment">
-                    <span class="comment-author">{{ comment.user }}</span>
+                    <span class="comment-author">{{ comment.user.username }}</span>
                     <span class="comment-content">{{ comment.content }}</span>
                 </li>
                 {% endfor %}

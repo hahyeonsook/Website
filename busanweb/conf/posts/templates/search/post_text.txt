@@ -1,0 +1,4 @@
+{{ object.pk }}
+{{ object.title }}
+{{ object.img.url }}
+{{ object.content }}

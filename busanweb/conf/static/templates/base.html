@@ -2,6 +2,8 @@
 <html lang="ko">
 <head>
     {% load static %}
+    {% load account %}
+    {% load socialaccount %}
 
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -35,12 +37,12 @@
                 {% if user.is_authenticated %}
                 <li><a href="">북마크</a></li>
                 {% if user.is_superuser %}
-                    <li><a href="{{ 'admin' }}">관리</a></li>
+                    <li><a href="admin/">관리</a></li>
                 {% endif %}
-                <li><a href="accounts/logout">로그아웃</a></li>
+                <li><a href="{% url 'account_logout' %}">로그아웃</a></li>
                 {% else %}
-                <li><a href="accounts/login">로그인</a></li>
-                <li><a href="accounts/signup">회원가입</a></li>
+                <li><a href="{% url 'account_login' %}">로그인</a></li>
+                <li><a href="{% url 'account_signup' %}">회원가입</a></li>
                 {% endif %}
             </ul>
         </div>

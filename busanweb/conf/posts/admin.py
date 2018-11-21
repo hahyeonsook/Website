@@ -20,5 +20,6 @@ class PostAdmin(admin.ModelAdmin):
             obj.images.create(file=afile)
 
 
+admin.site.register(Categ)
 admin.site.register(Post, PostAdmin)
 admin.site.register(Comment)

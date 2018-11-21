@@ -7,8 +7,8 @@ from tagging.models import Tag
 
 # Create your models here.
 
-class Category(models.Model):
-    cat_name = models.CharField(max_length=50, verbose_name='카테고리 이름')
+class Categ(models.Model):
+    title = models.CharField(max_length=50, verbose_name='카테고리 이름')
     tag = models.ForeignKey(Tag, on_delete=models.CASCADE)
 
     def __str__(self):

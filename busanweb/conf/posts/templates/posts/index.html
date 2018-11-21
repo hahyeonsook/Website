@@ -10,6 +10,20 @@
 {% endblock search_form %}
 
 {% block content %}
+    <h5>카테고리 목록</h5>
+    {% if categorys %}
+        {% for category in categorys %}
+        <div class="panel panel-default post-item">
+            <a href="{% url '' %}">{{ category.title }}</a>
+            {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+        </div>
+        {% endfor %}
+    {% else %}
+        <div class="panel panel-default post-item">
+        <p>카테고리가 없습니다.</p>
+        </div>
+    {% endif %}
+
     <h2>게시물 목록</h2>
 
     {% if latest_post_list %}

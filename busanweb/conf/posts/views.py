@@ -17,7 +17,18 @@ class PostListView(ListView):
 
     def get_queryset(self):
         return Post.objects.order_by('-pub_date')
+"""
+def post_list(request):
+    latest_post_list = Post.objects.order_by('-pub_date')
+    categorys = Categ.objects.all()
 
+    context = {
+        'latest_post_list': latest_post_list,
+        'categorys': categorys,
+    }
+
+    return render(request, 'posts/index.html', context)
+"""
 
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
@@ -69,3 +80,25 @@ def comment_form(request, pk):
             messages.error(request, error_msg)
 
         return HttpResponseRedirect(reverse('posts:post_detail', args=(post.id,)))
+
+# Category
+"""
+class CategoryListView(ListView):
+    model = Categ
+    template_name = ''
+    context_object_name = 'latest_category_list'
+
+    def get_queryset(self):
+        return Category.objects.order_by('-pub_date')
+
+def category_list(request):
+    categorys = Categ.objects.all()
+
+    context = {
+        'categorys': categorys,
+    }
+
+    return render(request, 'posts/index.html', context)
+
+def category_detail(request, pk):
+"""

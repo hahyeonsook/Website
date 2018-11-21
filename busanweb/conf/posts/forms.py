@@ -2,7 +2,13 @@ from django import forms
 from django.urls import reverse
 from .models import *
 
-# Image
+# Category
+class CategForm(forms.ModelForm):
+    title = forms.CharField(max_length=50, label='카테고리 이름')
+
+    class Meta:
+        mogel = Categ
+        fields = ['title', 'tag']
 
 # Post
 class PostForm(forms.ModelForm):
@@ -12,7 +18,7 @@ class PostForm(forms.ModelForm):
 
     class Meta:
         model = Post
-        fields = ['title', 'img', 'content', 'user', 'tags']
+        fields = ['title', 'img', 'user', 'tags']
 
 
 # Comment

@@ -7,8 +7,8 @@ app_name = 'posts'
 
 urlpatterns = [
     # /
-    path('', views.PostListView.as_view(), name='index'),
-#    path('', views.post_list, name='index'),
+#    path('', views.PostListView.as_view(), name='index'),
+    path('', views.post_list, name='index'),
 
     # /99/
     path('<int:pk>/', views.post_detail, name='post_detail'),
@@ -21,7 +21,7 @@ urlpatterns = [
     # /category/
 #    path('category/', views.category_list, name='category_list')
     # /category/77/
-#     path('category/<int:pk>/', views.category_detail, name='category_detail')
+     path('category/<tag>/', views.CategoryDetailView.as_view(), name='category_detail')
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

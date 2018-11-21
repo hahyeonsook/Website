@@ -3,6 +3,8 @@ from django.http import HttpResponseRedirect, JsonResponse
 from django.views.generic import ListView
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from tagging.models import Tag, TaggedItem
+from tagging.views import TaggedObjectList
 
 from .models import *
 from .forms import *
@@ -10,6 +12,7 @@ from .forms import *
 # Create your views here.
 
 # Post
+"""
 class PostListView(ListView):
     model = Post
     template_name = 'posts/index.html'
@@ -28,7 +31,7 @@ def post_list(request):
     }
 
     return render(request, 'posts/index.html', context)
-"""
+
 
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
@@ -85,20 +88,29 @@ def comment_form(request, pk):
 """
 class CategoryListView(ListView):
     model = Categ
-    template_name = ''
+    template_name = 'category_list.html'
     context_object_name = 'latest_category_list'
 
     def get_queryset(self):
         return Category.objects.order_by('-pub_date')
 
-def category_list(request):
-    categorys = Categ.objects.all()
+def category_detail(request, pk):
+    # tag를 가진 post list를 나열한다.
+    category = get_object_or_404(Categ, pk=pk)
+    tags = category.tags
+    tagManager = models.TaggedItemManager
+
+    queryset = tagManager.get_by_model(Post, tags)
 
     context = {
-        'categorys': categorys,
+        'posts': queryset,
+        'category': category,
     }
 
-    return render(request, 'posts/index.html', context)
-
-def category_detail(request, pk):
+    return render(request, 'posts/category_detail.html', context)
 """
+
+class CategoryDetailView(TaggedObjectList):
+    model = Post
+    template_name = 'posts/category_detail.html'
+

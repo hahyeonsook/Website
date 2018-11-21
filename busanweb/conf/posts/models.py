@@ -9,10 +9,10 @@ from tagging.models import Tag
 
 class Categ(models.Model):
     title = models.CharField(max_length=50, verbose_name='카테고리 이름')
-    tag = models.ForeignKey(Tag, on_delete=models.CASCADE)
+    tags = TagField('태그', help_text='tag1, tag2, tag3')
 
     def __str__(self):
-        return self.tag.name
+        return self.title
 
 class Post(models.Model):
     title = models.CharField(max_length=50, default=None)

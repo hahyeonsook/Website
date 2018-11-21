@@ -1,7 +1,7 @@
 {% extends "base_posts.html" %}
 
 {% block search_form %}
-    <form method="GET" action="./search?" class="navbar-form navbar-left search-hashtag-form" role="search">
+    <form method="GET" action="/search?" class="navbar-form navbar-left search-hashtag-form" role="search">
         <div class="form-group">
 <!--            {{ form.q}}-->
         <input type="text" name=q class="form-control search-hashtag-input" placeholder="검색">
@@ -10,30 +10,16 @@
 {% endblock search_form %}
 
 {% block content %}
-    <h5>카테고리 목록</h5>
-    {% if categorys %}
-        {% for category in categorys %}
-        <div class="panel panel-default post-item">
-            <a href="{% url 'posts:category_detail' category.pk %}">{{ category.title }}</a>
-            {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-        </div>
-        {% endfor %}
-    {% else %}
-        <div class="panel panel-default post-item">
-        <p>카테고리가 없습니다.</p>
-        </div>
-    {% endif %}
+    <h2>{{ category.title }} 목록</h2>
 
-    <h2>게시물 목록</h2>
-
-    {% if latest_post_list %}
-        {% for post in latest_post_list %}
+    {% if object_list %}
         <div class="panel panel-default post-item">
+        {% for post in object_list %}
             <a href="{% url 'posts:post_detail' post.pk %}"><img src="{{ post.img.url }}" alt="안뜸" class="post-image"></a>
             {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
             <h6>{{ post.pub_date }}</h6>
-        </div>
         {% endfor %}
+        </div>
     {% else %}
         <div class="panel panel-default post-item">
         <p>게시물이 없습니다.</p>

@@ -7,6 +7,7 @@ class PostIndex(indexes.SearchIndex, indexes.Indexable):
     # document=True: 검색할 때, text 필드를 최우선 순위로 사용하겠다는 뜻
     text = indexes.CharField(document=True, use_template=True, template_name='search/post_text.txt')
     # model_attr: 반드시 model에 있는 column을 지정해야 함
+    tag = indexes.CharField(model_attr='tags')
     user = indexes.CharField(model_attr='user')
     pub_date = indexes.DateTimeField(model_attr='pub_date')
 

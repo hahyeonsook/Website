@@ -2,3 +2,4 @@
 {{ object.title }}
 {{ object.img.url }}
 {{ object.content }}
+{{ object.tags }}

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block search_form %}
+    <form method="GET" action="./search?" class="navbar-form navbar-left search-hashtag-form" role="search">
+        <div class="form-group">
+<!--            {{ form.q}}-->
+        <input type="text" name=q class="form-control search-hashtag-input" placeholder="검색">
+        </div>
+    </form>
+{% endblock search_form %}

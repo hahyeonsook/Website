@@ -3,8 +3,16 @@ from django.conf import settings
 from django.utils import timezone
 
 from tagging.fields import TagField
+from tagging.models import Tag
 
 # Create your models here.
+
+class Category(models.Model):
+    cat_name = models.CharField(max_length=50, verbose_name='카테고리 이름')
+    tag = models.ForeignKey(Tag, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.tag.name
 
 class Post(models.Model):
     title = models.CharField(max_length=50, default=None)
@@ -38,3 +46,7 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.content
+
+
+
+    
